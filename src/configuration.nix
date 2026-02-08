@@ -76,7 +76,6 @@
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
@@ -155,6 +154,12 @@
   hardware.nvidia.modesetting.enable = true;
 
   services.flatpak.enable = true;
+
+  services.xserver = {
+    enable = true;
+    
+    windowManager.oxwm.enable = true;
+  };
 
   services.scx.enable = true;
   services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"

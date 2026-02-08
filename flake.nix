@@ -4,6 +4,10 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+
+    # OXWM
+    oxwm.url = "github:tonybanters/oxwm";
+    oxwm.inputs.nixpkgs.follows = "nixpkgs";
     
     # Nix Flatpak
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -18,6 +22,7 @@
     nixpkgs,
     home-manager,
     nix-flatpak,
+    oxwm,
     ...
   } @ inputs: let
   in {
@@ -29,6 +34,7 @@
         specialArgs = {inherit inputs;};
         # > Our main nixos configuration file <
         modules = [
+	oxwm.nixosModules.default
         nix-flatpak.nixosModules.nix-flatpak
 	./src/configuration.nix
 	];
