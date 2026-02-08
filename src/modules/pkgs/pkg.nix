@@ -13,6 +13,8 @@
   emacs
   protonplus
   prismlauncher
+  rofi
+  waypaper
   ];
 
   programs.gamemode.enable = true;
