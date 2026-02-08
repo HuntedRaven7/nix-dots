@@ -154,6 +154,8 @@
   hardware.nvidia.open = true;  
   hardware.nvidia.modesetting.enable = true;
 
+  services.flatpak.enable = true;
+
   services.scx.enable = true;
   services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 

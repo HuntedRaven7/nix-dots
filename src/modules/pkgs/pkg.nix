@@ -9,6 +9,10 @@
   godot-mono
   zsh
   git
+  ghostty
+  emacs
+  protonplus
+  prismlauncher
   ];
 
   programs.gamemode.enable = true;
