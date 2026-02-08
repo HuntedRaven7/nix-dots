@@ -40,6 +40,9 @@
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
+      # Cachix For Anime Games
+      substituters = [ "https://ezkea.cachix.org" ];
+      trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
@@ -157,8 +160,6 @@
 
   services.xserver = {
     enable = true;
-    
-    windowManager.oxwm.enable = true;
   };
 
   services.scx.enable = true;
