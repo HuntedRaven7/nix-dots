@@ -164,6 +164,11 @@
     enable = true;
   };
 
+  programs.neovim = {
+   enable = true;
+   defaultEditor = true;
+  };
+
   programs.hyprland.enable = true; # enable Hyprland
 
   services.scx.enable = true;
