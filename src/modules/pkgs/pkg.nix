@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
   neovim
+  krita
   zed-editor
   firefox
   fastfetch
