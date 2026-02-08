@@ -16,6 +16,9 @@
   prismlauncher
   rofi
   waypaper
+  dotnet-sdk
+  dotnet-aspnetcore
+  dotnet-runtime
   ];
 
   programs.gamemode.enable = true;

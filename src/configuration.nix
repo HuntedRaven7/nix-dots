@@ -164,6 +164,8 @@
     enable = true;
   };
 
+  programs.hyprland.enable = true; # enable Hyprland
+
   services.scx.enable = true;
   services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
 
