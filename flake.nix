@@ -17,6 +17,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-flatpak,
     ...
   } @ inputs: let
   in {
@@ -27,7 +28,10 @@
       nix-pc = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         # > Our main nixos configuration file <
-        modules = [./src/configuration.nix];
+        modules = [
+        nix-flatpak.nixosModules.nix-flatpak
+	./src/configuration.nix
+	];
       };
     };
 
@@ -40,7 +44,9 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure 
         extraSpecialArgs = {inherit inputs;};
         # > Our main home-manager configuration file <
-        modules = [./src/home.nix];
+        modules = [
+	./src/home.nix
+	];
       };
     };
   };
