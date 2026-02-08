@@ -28,6 +28,9 @@
       upgrade = "sudo nixos-rebuild switch --upgrade --flake ~/git/nix-dots/src#nix-workstation";
       full-upgrade = "sudo nixos-rebuild switch --upgrade --flake ~/git/nix-dots/src#nix && home-manager switch --flake ~/git/nix-dots/src#edward@nix";
       home-update = "home-manager switch --flake ~/nixos-dotfiles#edward@nix-workstation";
+      obsidianssh = "(cloudflared access tcp --hostname ssh.obsidianos.xyz --listener 127.0.0.1:2222 & PID=$!; sleep 1; ssh -p 2222 localhost; kill $PID)";
+      obsidiansftp = "(cloudflared access tcp --hostname ssh.obsidianos.xyz --listener 127.0.0.1:2222 & PID=$!; sleep 1; sftp -p 2222 localhost; kill $PID)";
+      obsidianirc = "(cloudflared access tcp --hostname irc.obsidianos.xyz --listener 127.0.0.1:6667 & PID=$!; sleep 1; konversation --server localhost --port 6667; kill $PID)";
     };
     histSize = 10000;
     histFile = "$HOME/.zsh_history";

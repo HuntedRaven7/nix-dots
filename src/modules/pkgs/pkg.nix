@@ -19,6 +19,7 @@
   dotnet-sdk
   dotnet-aspnetcore
   dotnet-runtime
+  cloudflared
   ];
 
   programs.gamemode.enable = true;
