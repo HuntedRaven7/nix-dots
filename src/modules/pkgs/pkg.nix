@@ -3,6 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
   neovim
+  vscode
+  nwg-look
+  pavucontrol
   krita
   zed-editor
   firefox
@@ -11,7 +14,6 @@
   zsh
   git
   ghostty
-  emacs
   protonplus
   prismlauncher
   rofi
