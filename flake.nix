@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # CachyOS Kernel
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    #nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # Anime Game Launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -30,7 +30,7 @@
     home-manager,
     nix-flatpak,
     aagl,
-    nix-cachyos-kernel,
+    #nix-cachyos-kernel,
     ...
   } @ inputs: let
   in {
@@ -44,11 +44,11 @@
         modules = [
         nix-flatpak.nixosModules.nix-flatpak
 	./src/configuration.nix
-        {
-            nixpkgs.overlays = [
-            nix-cachyos-kernel.overlays.pinned
-            ];
-        }
+        #{
+        #    nixpkgs.overlays = [
+        #    nix-cachyos-kernel.overlays.pinned
+        #    ];
+        #}
 
         {
           imports = [ aagl.nixosModules.default ];

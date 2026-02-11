@@ -156,7 +156,7 @@
   hardware.nvidia.open = true;  
   hardware.nvidia.modesetting.enable = true;
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
   services.flatpak.enable = true;
 

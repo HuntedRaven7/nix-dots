@@ -3,11 +3,11 @@
 {
   environment.systemPackages = with pkgs; [
   neovim
-  vscode
+  brave
+  gearlever
   nwg-look
   pavucontrol
   krita
-  zed-editor
   firefox
   fastfetch
   godot-mono
