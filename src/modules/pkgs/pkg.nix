@@ -2,8 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-  neovim
   brave
+  neovim
   gearlever
   nwg-look
   pavucontrol
@@ -16,6 +16,7 @@
   ghostty
   protonplus
   prismlauncher
+  emacs
   rofi
   waypaper
   dotnet-sdk

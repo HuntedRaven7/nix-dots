@@ -26,7 +26,6 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [ 
-      # neovim-nightly-overlay.overlays.default
 
     ];
     # Configure your nixpkgs instance
@@ -162,11 +161,6 @@
 
   services.xserver = {
     enable = true;
-  };
-
-  programs.neovim = {
-   enable = true;
-   defaultEditor = true;
   };
 
   services.scx.enable = true;
