@@ -20,7 +20,7 @@
     ./hardware-configuration.nix
     ./modules/shell/zsh.nix
     ./modules/pkgs/pkg.nix
-    ./modules/pkgs/flatpak.nix
+#    ./modules/config/nvim.nix
   ];
 
   nixpkgs = {
@@ -78,7 +78,10 @@
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  services.displayManager.gdm.enable = true;
+  programs.dank-material-shell.greeter = {
+  enable = true;
+  compositor.name = "niri";  # Or "hyprland" or "sway"
+  };
   services.desktopManager.gnome.enable = true;
 
   services.xserver.xkb = {
@@ -86,8 +89,6 @@
     variant = "";
   };
 
-  xdg.portal.enable = true;
-  xdg.portal.config.common.default = "*";
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
   description = "polkit-gnome-authentication-agent-1";
   wantedBy = [ "graphical-session.target" ];
@@ -122,12 +123,6 @@
     shell = pkgs.zsh;
   };
 
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 22 9090 443 ];
@@ -157,6 +152,31 @@
 
   #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config = {
+      common.default = "gtk";
+      niri.default = [ "gnome" "gtk" ];
+    };
+    xdgOpenUsePortal = false;
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+
+  # Use the regular SSH agent instead of gcr-ssh-agent
+  programs.ssh.startAgent = true;
+
+  # Enable PAM integration for gnome-keyring
+  # This allows the keyring to be unlocked automatically at login
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
+
   services.flatpak.enable = true;
 
   services.xserver = {
@@ -165,16 +185,6 @@
 
   services.scx.enable = true;
   services.scx.scheduler = "scx_lavd"; # default is "scx_rustland"
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
-    };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";

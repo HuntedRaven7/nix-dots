@@ -8,6 +8,21 @@
     # CachyOS Kernel
     #nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
+    # NVF
+    nvf.url = "github:notashelf/nvf";
+
+    # Dank Material Shell
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # DMS Plugins
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Anime Game Launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.inputs.nixpkgs.follows = "nixpkgs"; 
@@ -30,6 +45,9 @@
     home-manager,
     nix-flatpak,
     aagl,
+    nvf,
+    dms,
+    dms-plugin-registry,
     #nix-cachyos-kernel,
     ...
   } @ inputs: let
@@ -43,7 +61,7 @@
         # > Our main nixos configuration file <
         modules = [
         nix-flatpak.nixosModules.nix-flatpak
-	./src/configuration.nix
+        ./src/configuration.nix
         #{
         #    nixpkgs.overlays = [
         #    nix-cachyos-kernel.overlays.pinned
@@ -51,7 +69,12 @@
         #}
 
         {
-          imports = [ aagl.nixosModules.default ];
+          imports = [ aagl.nixosModules.default 
+          inputs.nvf.nixosModules.default 
+          inputs.dms.nixosModules.dank-material-shell
+          inputs.dms-plugin-registry.modules.default
+          inputs.dms.nixosModules.greeter
+          ];
           nix.settings = aagl.nixConfig; # Set up Cachix
           programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
           programs.anime-games-launcher.enable = true;
