@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ python3, config, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -8,7 +8,6 @@
   nwg-look
   pavucontrol
   krita
-  firefox
   fastfetch
   godot-mono
   zsh
@@ -17,12 +16,17 @@
   protonplus
   prismlauncher
   emacs
-  rofi
-  waypaper
   dotnet-sdk
   dotnet-aspnetcore
   dotnet-runtime
   cloudflared
+  ];
+
+  services.flatpak.packages = [
+    "com.discordapp.Discord"
+    "org.kde.neochat"
+    "com.mattjakeman.ExtensionManager"
+    "page.tesk.Refine"
   ];
 
   programs.gamemode.enable = true;
