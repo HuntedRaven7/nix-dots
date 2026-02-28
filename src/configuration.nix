@@ -78,11 +78,10 @@
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  programs.dank-material-shell.greeter = {
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
   enable = true;
-  compositor.name = "niri";  # Or "hyprland" or "sway"
   };
-  services.desktopManager.gnome.enable = true;
 
   services.xserver.xkb = {
     layout = "us";

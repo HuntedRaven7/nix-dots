@@ -8,10 +8,9 @@
   xwayland-satellite
   nwg-look
   pavucontrol
+  element-desktop
+  ramalama
   krita
-  lua
-  luajit
-  luajitPackages.lua-lsp
   fastfetch
   godot-mono
   zsh
@@ -25,53 +24,17 @@
   cloudflared
   ];
 
-  programs.niri.enable = true;  
+  #services.ollama = {
+  #  enable = true;
+  #  package = pkgs.ollama-cuda;
+  #};
 
-  programs.dank-material-shell = {
-  enable = true;
-
-  systemd = {
-    enable = true;             # Systemd service for auto-start
-    restartIfChanged = true;   # Auto-restart dms.service when dank-material-shell changes
-  };
-
-  # Core features
-  enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-  enableVPN = true;                  # VPN management widget
-  enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
-  enableAudioWavelength = true;      # Audio visualizer (cava)
-  enableCalendarEvents = true;       # Calendar integration (khal)
-  enableClipboardPaste = true;       # Pasting items from the clipboard (wtype)
-
-  plugins = {
-      # Simply enable plugins by their ID (from the registry)
-      dankBatteryAlerts.enable = true;
-      dockerManager.enable = true;
-      
-      # Add plugin-specific settings
-      mediaPlayer = {
-        enable = true;
-
-        # You can only define settings here if using the home-manager module
-        settings = {
-          preferredSource = "spotify";
-        };
-      };
-    };
-  };
-
-
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-  };
-
-  users.groups.ollama = {};
-    users.users.ollama = {
-      isSystemUser = true;
-      group = "ollama";
-      extraGroups = [ "render" "video" ];
-  };
+  #users.groups.ollama = {};
+  #  users.users.ollama = {
+  #    isSystemUser = true;
+  #    group = "ollama";
+  #    extraGroups = [ "render" "video" ];
+  #};
 
   programs.neovim = {
     enable = true;
@@ -85,8 +48,6 @@
 
   services.flatpak.packages = [
     "com.discordapp.Discord"
-    "org.kde.neochat"
-    "com.mattjakeman.ExtensionManager"
   ];
 
   programs.gamemode.enable = true;

@@ -25,7 +25,7 @@
       nix-edit = "nvim  /home/edward/nixos-dotfiles/configuration.nix";
       home-edit = "nvim /home/edward/nixos-dotfiles/home.nix";
       update = "sudo nixos-rebuild switch --flake ~/git/nix-dots/#nix-pc";
-      upgrade = "sudo nixos-rebuild switch --upgrade --flake ~/git/nix-dots/src#nix-workstation";
+      upgrade = "sudo nixos-rebuild switch --upgrade --flake ~/git/nix-dots#nix-pc";
       full-upgrade = "sudo nixos-rebuild switch --upgrade --flake ~/git/nix-dots/src#nix && home-manager switch --flake ~/git/nix-dots/src#edward@nix";
       home-update = "home-manager switch --flake ~/nixos-dotfiles#edward@nix-workstation";
       obsidianssh = "(cloudflared access tcp --hostname ssh.obsidianos.xyz --listener 127.0.0.1:2222 & PID=$!; sleep 1; ssh -p 2222 localhost; kill $PID)";

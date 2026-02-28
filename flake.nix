@@ -12,16 +12,16 @@
     nvf.url = "github:notashelf/nvf";
 
     # Dank Material Shell
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #dms = {
+    #  url = "github:AvengeMedia/DankMaterialShell/stable";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # DMS Plugins
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #dms-plugin-registry = {
+    #  url = "github:AvengeMedia/dms-plugin-registry";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     # Anime Game Launcher
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -46,8 +46,8 @@
     nix-flatpak,
     aagl,
     nvf,
-    dms,
-    dms-plugin-registry,
+    #dms,
+    #dms-plugin-registry,
     #nix-cachyos-kernel,
     ...
   } @ inputs: let
@@ -71,9 +71,9 @@
         {
           imports = [ aagl.nixosModules.default 
           inputs.nvf.nixosModules.default 
-          inputs.dms.nixosModules.dank-material-shell
-          inputs.dms-plugin-registry.modules.default
-          inputs.dms.nixosModules.greeter
+          #inputs.dms.nixosModules.dank-material-shell
+          #inputs.dms-plugin-registry.modules.default
+          #inputs.dms.nixosModules.greeter
           ];
           nix.settings = aagl.nixConfig; # Set up Cachix
           programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
