@@ -72,6 +72,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.luks.devices."luks-bca35ad9-6287-404a-92e4-1ff16e0b5a43".device = "/dev/disk/by-uuid/bca35ad9-6287-404a-92e4-1ff16e0b5a43";
 
   networking.networkmanager.enable = true;
 
@@ -180,6 +181,8 @@
 
   services.xserver = {
     enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
   };
 
   services.scx.enable = true;

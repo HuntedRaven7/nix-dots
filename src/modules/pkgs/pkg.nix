@@ -3,24 +3,14 @@
 {
   environment.systemPackages = with pkgs; [
   firefox
-  zed-editor
-  gearlever
-  xwayland-satellite
-  nwg-look
-  pavucontrol
+  wget
+  stoat-desktop
   element-desktop
-  ramalama
-  krita
   fastfetch
-  godot-mono
   zsh
   git
   ghostty
   protonplus
-  prismlauncher
-  dotnet-sdk
-  dotnet-aspnetcore
-  dotnet-runtime
   cloudflared
   ];
 
@@ -36,6 +26,11 @@
   #    extraGroups = [ "render" "video" ];
   #};
 
+  services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
+    src = ../config/dwm;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -48,6 +43,9 @@
 
   services.flatpak.packages = [
     "com.discordapp.Discord"
+    "it.mijorus.gearlever"
+    "app.twintaillauncher.ttl"
+    "org.kde.krita"
   ];
 
   programs.gamemode.enable = true;
