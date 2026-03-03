@@ -26,11 +26,6 @@
   #    extraGroups = [ "render" "video" ];
   #};
 
-  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
-    src = ../config/dwm;
-  };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;

@@ -179,8 +179,13 @@
 
   services.flatpak.enable = true;
 
+  services.xserver.windowManager.dwm.package = pkgs.dwm.overrideAttrs {
+    src = ./modules/config/dwm;
+  };
+
   services.xserver = {
     enable = true;
+    windowManager.dwm.enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
   };
