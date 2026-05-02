@@ -17,10 +17,10 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+      ../pkgs/packages-system.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
+      ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -107,6 +107,8 @@
       PasswordAuthentication = true;
     };
   };
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";

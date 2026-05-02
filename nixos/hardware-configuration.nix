@@ -1,5 +1,14 @@
+{ config, lib, pkgs, modulesPath, ... }:
+
 {
-  boot.loader.systemd-boot.enable = true;
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/7c9d9dc4-fe89-4842-9661-855359e05952";
@@ -16,7 +25,9 @@
     [ { device = "/dev/disk/by-uuid/5a3f7c99-7a9f-4674-ab0d-e2664403999e"; }
     ];
 
-  # Set your system kind (needed for flakes)
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+
+
+
