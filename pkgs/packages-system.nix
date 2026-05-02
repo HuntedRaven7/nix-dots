@@ -7,5 +7,6 @@
      vivaldi
      alacritty
      unstablePkgs.discord
+     vivaldi-ffmpeg-codecs
     ];
 }
