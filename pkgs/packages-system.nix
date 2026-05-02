@@ -10,7 +10,6 @@
       proprietaryCodecs = true;
      })
      vivaldi-ffmpeg-codecs
-     vivaldi-widevine
      unstablePkgs.discord
     ];
 }
