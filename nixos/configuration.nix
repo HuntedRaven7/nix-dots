@@ -20,6 +20,7 @@
       ../pkgs/packages-system.nix
       ../pkgs/flatpak.nix
       ../modules/nixos/nvidia.nix
+      ../modules/nixos/kanata.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
       ./hardware-configuration.nix
