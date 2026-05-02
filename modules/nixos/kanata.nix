@@ -1,42 +1,49 @@
 { config, pkgs, ... }:
 
 {
-services.kanata = {
+  services.kanata = {
     enable = true;
-    extraDefCfg = "process-unmapped-keys yes";
-    config = ''
-(defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
-)
+    # Define your keyboards here (you can name 'internal' whatever you like)
+    keyboards.internal = {
+      # This is where your kanata lisp config goes
+      config = ''
+        (defcfg
+          process-unmapped-keys yes
+        )
 
-(deflayer base
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @cap @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
-)
+        (defsrc
+          grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+          tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+          caps a    s    d    f    g    h    j    k    l    ;    '    ret
+          lsft z    x    c    v    b    n    m    ,    .    /    rsft
+          lctl lmet lalt           spc            ralt rmet rctl
+        )
 
-(defalias
-  ;; Homerow mods - left hand (GACS)
-  a (tap-hold-release 200 200 a lmeta)
-  s (tap-hold-release 200 200 s lalt)
-  d (tap-hold-release 200 200 d lctl)
-  f (tap-hold-release 200 200 f lsft)
+        (deflayer base
+          grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+          tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+          @cap @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+          lsft z    x    c    v    b    n    m    ,    .    /    rsft
+          lctl lmet lalt           spc            ralt rmet rctl
+        )
 
-  ;; Homerow mods - right hand (SCAG mirrored)
-  j (tap-hold-release 200 200 j rsft)
-  k (tap-hold-release 200 200 k rctl)
-  l (tap-hold-release 200 200 l ralt)
-  ; (tap-hold-release 200 200 ; rmeta)
+        (defalias
+          ;; Homerow mods - left hand
+          a (tap-hold-release 200 200 a lmet)
+          s (tap-hold-release 200 200 s lalt)
+          d (tap-hold-release 200 200 d lctl)
+          f (tap-hold-release 200 200 f lsft)
 
-  ;; Caps lock as Escape on tap, Ctrl on hold
-  cap (tap-hold-release 200 200 esc lctl)
-)
-        '';
+          ;; Homerow mods - right hand
+          j (tap-hold-release 200 200 j rsft)
+          k (tap-hold-release 200 200 k rctl)
+          l (tap-hold-release 200 200 l ralt)
+          ; (tap-hold-release 200 200 ; rmet)
+
+          ;; Caps lock as Escape on tap, Ctrl on hold
+          cap (tap-hold-release 200 200 esc lctl)
+        )
+      '';
     };
+  };
 }
