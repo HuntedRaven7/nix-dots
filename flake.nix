@@ -52,6 +52,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           # > Our main nixos configuration file <
+          nix-flatpak.nixosModules.nix-flatpak
           ./nixos/configuration.nix
         ];
       };
