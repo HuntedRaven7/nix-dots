@@ -18,6 +18,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-flatpak,
     ...
   } @ inputs: let
     # Supported systems for your flake packages, shell, etc.
