@@ -8,4 +8,8 @@
     "moe.launcher.sleepy-launcher"
     "moe.launcher.an-anime-game-launcher"
   ];
+  services.flatpak.update.auto = {
+    enable = true;
+    onCalendar = "weekly"; # Default value
+  };
 }
