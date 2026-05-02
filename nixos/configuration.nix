@@ -18,6 +18,7 @@
 
     # You can also split up your configuration and import pieces of it here:
       ../pkgs/packages-system.nix
+      ../modules/nixos/nvidia.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
       ./hardware-configuration.nix
@@ -83,6 +84,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Locale
+  i18n.defaultLocale = "en_CA.UTF-8";
+
+  # Set your time zone.
+  time.timeZone = "America/Toronto";
 
   # Audio setup
   services.pulseaudio.enable = false;
