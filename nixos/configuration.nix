@@ -86,9 +86,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
  
-  # Nonfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Locale
   i18n.defaultLocale = "en_CA.UTF-8";
 

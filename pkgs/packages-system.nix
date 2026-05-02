@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
      vim
      git
-     unstablePkgs.vivaldi
+     vivaldi
      alacritty
      unstablePkgs.discord
     ];
