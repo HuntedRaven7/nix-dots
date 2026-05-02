@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
      vim
      git
-     pkgs.unstablePkgs = discord
+     pkgs.unstablePkgs discord
     ];
 }
