@@ -4,12 +4,8 @@
   environment.systemPackages = with pkgs; [
      vim
      git
-     vivaldi
      alacritty
-     (vivaldi.override {
-      proprietaryCodecs = true;
-     })
-     vivaldi-ffmpeg-codecs
+     gearlever
      unstablePkgs.discord
     ];
 }

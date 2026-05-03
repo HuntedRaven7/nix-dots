@@ -12,23 +12,21 @@
   boot.loader.systemd-boot.enable = true;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7c9d9dc4-fe89-4842-9661-855359e05952";
+    { device = "/dev/disk/by-uuid/ac3d23f7-9a69-4b64-9217-e9461eaa2084";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B4F1-F2AA";
+    { device = "/dev/disk/by-uuid/1F3C-BCF0";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/5a3f7c99-7a9f-4674-ab0d-e2664403999e"; }
+    [ { device = "/dev/disk/by-uuid/f0f5ecaa-c48d-4de1-8de1-a13d6205601d"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
-
-
 
